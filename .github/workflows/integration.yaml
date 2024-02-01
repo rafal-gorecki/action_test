@@ -1,0 +1,19 @@
+---
+name: CI
+
+on:
+  push:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo Commit was pushed!
+
+  pr-merge:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo The PR was merged!
