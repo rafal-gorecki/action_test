@@ -20,10 +20,10 @@ jobs:
         uses: convictional/trigger-workflow-and-wait@v1.6.1
         with:
           owner: rafal-gorecki
-          repo: action_test
+          repo: release-action
           github_token: ${{ secrets.GH_PAT }}
           workflow_file_name: test-release.yml
-          ref: add-workflow-call
+          ref: main
           wait_interval: 10
           client_payload: |
             {
