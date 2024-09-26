@@ -10,12 +10,13 @@ on:
         default: ros2-devel
 
 jobs:
-
-  check_docs:
-    name: Check docs build
+  run_external_action:
     runs-on: ubuntu-22.04
     steps:
-      - name: Trigger repository build workflow
+      - name: Print info
+        run: echo 'Action is running'
+
+      - name: Trigger external repository
         uses: convictional/trigger-workflow-and-wait@v1.6.1
         with:
           owner: rafal-gorecki
