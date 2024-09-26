@@ -1,5 +1,5 @@
 ---
-name: Release candidate
+name: Trigger using workflow_dispatch
 
 on:
   workflow_dispatch:
