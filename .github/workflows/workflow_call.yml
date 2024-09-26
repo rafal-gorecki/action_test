@@ -20,5 +20,3 @@ jobs:
         uses: rafal-gorecki/release-action/.github/workflows/test-release.yml@main
         with:
           husarion_ugv_branch: ${{ github.event.inputs.husarion_ugv_branch }}
-        secrets:
-          GH_PAT: ${{ secrets.GH_PAT }}
