@@ -11,12 +11,6 @@ on:
 
 jobs:
   run_external_action:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Print info
-        run: echo 'Action is running'
-
-      - name: Trigger external repository workflow
-        uses: rafal-gorecki/release-action/.github/workflows/test-release.yml@main
-        with:
-          husarion_ugv_branch: ${{ github.event.inputs.husarion_ugv_branch }}
+    uses: rafal-gorecki/release-action/.github/workflows/test-release.yml@main
+    with:
+      husarion_ugv_branch: ${{ github.event.inputs.husarion_ugv_branch }}
