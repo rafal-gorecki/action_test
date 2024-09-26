@@ -1,20 +1,30 @@
 ---
-name: CI
+name: Release candidate
 
 on:
-  push:
-  pull_request:
-    types:
-      - closed
+  workflow_dispatch:
+    inputs:
+      husarion_ugv_branch:
+        description: Branch name of the release candidate.
+        type: string
+        default: ros2-devel
 
 jobs:
-  push:
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo Commit was pushed!
 
-  pr-merge:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+  check_docs:
+    name: Check docs build
+    runs-on: ubuntu-22.04
     steps:
-    - run: echo The PR was merged!
+      - name: Trigger repository build workflow
+        uses: convictional/trigger-workflow-and-wait@v1.6.1
+        with:
+          owner: rafal-gorecki
+          repo: action_test
+          github_token: ${{ secrets.GH_PAT }}
+          workflow_file_name: test-release.yml
+          ref: add-workflow-call
+          wait_interval: 10
+          client_payload: |
+            {
+              "husarion_ugv_branch": "${{ inputs.husarion_ugv_branch }}"
+            }
