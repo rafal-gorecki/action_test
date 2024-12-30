@@ -1,0 +1,27 @@
+---
+name: Local Dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release candidate version (format `X.X.X`, e.g. `2.0.1`).
+        required: true
+      date:
+        description: Release candidate date stamp (format `YYYYMMDD`, e.g. `20240430`).
+        required: true
+
+env:
+  RC_BRANCH_NAME: ${{ github.event.inputs.version }}-${{ github.event.inputs.date }}
+
+jobs:
+  call:
+    name: Call
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          echo "Building Docker image with build type: ${{ inputs.date }}"
