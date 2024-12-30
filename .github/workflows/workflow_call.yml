@@ -2,7 +2,7 @@
 name: Trigger using workflow_call
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       husarion_ugv_branch:
         description: Branch name of the release candidate.
