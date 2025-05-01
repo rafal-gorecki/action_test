@@ -22,6 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build Docker Image
-        run: |
-          echo "Building Docker image with build type: ${{ inputs.date }}"
+      - name: Build Docker
+        uses: ./.github/workflows/local_dispatch.yaml
+        with:
+          build_type: development

@@ -1,0 +1,19 @@
+name: Local Call
+
+on:
+  workflow_call:
+    inputs:
+      build_type:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker Image
+        run: |
+          echo "Building Docker image with build type: ${{ inputs.build_type }}"
